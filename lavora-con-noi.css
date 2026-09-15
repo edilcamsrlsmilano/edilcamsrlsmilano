@@ -86,7 +86,7 @@
 }
 
 /* --- MODALE SUCCESSO --- */
-.modal-wrapper--success { max-width: 420px; text-align: center; }
+.modal-wrapper--success { max-width: 420px; text-align: center; justify-items: center; }
 .success-icon { margin-bottom: 20px; }
 .success-circle,
 .success-check { stroke: var(--red); stroke-linecap: round; stroke-linejoin: round; }
