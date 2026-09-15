@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <title>Edil Cam Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* =============================================
+       RESET & BASE
+       ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white:      #FFFFFF;
+      --grey-light: #F5F5F5;
+      --grey-mid:   #E0E0E0;
+      --grey:       #9A9A9A;
+      --grey-dark:  #4A4A4A;
+      --black:      #1A1A1A;
+      --red:        #C0392B;
+      --red-dark:   #962D22;
+      --font-display: 'Oswald', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --radius:     2px;
+      --transition: 0.25s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-dark);
+      background: var(--white);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =============================================
+       LAYOUT PRINCIPALE
+       ============================================= */
+    .formazione-wrapper {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+      background: var(--white);
+    }
+
+    /* --- COLONNA SINISTRA (FORM) --- */
+    .formazione-left {
+      flex: 1;
+      background: var(--white);
+      padding: 100px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .formazione-header-back {
+      position: absolute;
+      top: 30px;
+      left: 60px;
+    }
+
+    .back-link {
+      font-family: var(--font-display);
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--grey);
+      letter-spacing: 0.05em;
+      transition: color var(--transition);
+    }
+    .back-link:hover {
+      color: var(--red);
+    }
+
+    .form-container-box {
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .section-tag::before {
+      content: '—';
+      margin-right: 8px;
+      color: var(--red);
+    }
+
+    .form-title {
+      color: var(--black);
+      font-size: clamp(32px, 4vw, 44px);
+      margin-bottom: 12px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .form-subtitle {
+      color: var(--grey);
+      font-size: 15px;
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+
+    /* --- FORM GROUP --- */
+    .form-group-f {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .form-group-f label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-group-f input {
+      padding: 14px 16px;
+      background: var(--grey-light);
+      border: 1px solid var(--grey-mid);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--black);
+      outline: none;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .form-group-f input:focus {
+      border-color: var(--red);
+      background: var(--white);
+    }
+
+    .form-row-f {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* --- CHECKBOX PERSONALIZZATA --- */
+    .privacy-agreement-wrapper {
+      margin: 28px 0;
+      background: var(--grey-light);
+      padding: 16px;
+      border-radius: var(--radius);
+      border-left: 3px solid var(--grey-mid);
+      transition: border-color var(--transition);
+    }
+    .privacy-agreement-wrapper.unlocked {
+      border-left-color: var(--red);
+    }
+
+    .custom-checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+    }
+    .custom-checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    .checkbox-checkmark {
+      height: 20px;
+      width: 20px;
+      background-color: var(--white);
+      border: 2px solid var(--grey-mid);
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      position: relative;
+      transition: background-color var(--transition), border-color var(--transition);
+    }
+    .custom-checkbox-container input:checked ~ .checkbox-checkmark {
+      background-color: var(--red);
+      border-color: var(--red);
+    }
+    .checkbox-checkmark::after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 5px;
+      top: 1px;
+      width: 6px;
+      height: 11px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    .custom-checkbox-container input:checked ~ .checkbox-checkmark::after {
+      display: block;
+    }
+    .custom-checkbox-container input:disabled ~ .checkbox-checkmark {
+      background-color: #e8e8e8;
+      border-color: #ccc;
+      cursor: not-allowed;
+    }
+    .checkbox-label-text {
+      font-size: 14px;
+      color: var(--grey-dark);
+      line-height: 1.4;
+    }
+    .trigger-modal-link {
+      color: var(--red);
+      text-decoration: underline;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .checkbox-hint {
+      font-size: 11px;
+      color: var(--grey);
+      margin-top: 6px;
+      margin-left: 32px;
+    }
+
+    /* --- MESSAGGI ERRORE INLINE --- */
+    .field-error {
+      font-size: 11px;
+      color: var(--red);
+      margin-top: 4px;
+      min-height: 16px;
+      display: block;
+      letter-spacing: 0.02em;
+    }
+    .form-group-f input.is-invalid {
+      border-color: var(--red) !important;
+      background: #fff5f5;
+    }
+    .form-group-f input.is-valid {
+      border-color: #27ae60 !important;
+    }
+
+    /* --- BOTTONE --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+      border-radius: var(--radius);
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      border-color: var(--red);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--red-dark);
+      border-color: var(--red-dark);
+    }
+    .btn-primary:disabled {
+      background: #cccccc !important;
+      border-color: #cccccc !important;
+      color: #888888 !important;
+      cursor: not-allowed !important;
+      opacity: 0.7;
+    }
+
+    .btn-full {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* --- COLONNA DESTRA (CAROUSEL) --- */
+    .formazione-right {
+      flex: 1;
+      position: relative;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      min-height: 400px;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-track {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      z-index: 1;
+    }
+    .carousel-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+    }
+    .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .indicator.active {
+      background: var(--red);
+      transform: scale(1.2);
+    }
+
+    /* =============================================
+       MODALE TERMINI E PRIVACY
+       ============================================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-box {
+      background: var(--white);
+      width: 100%;
+      max-width: 600px;
+      max-height: 80vh;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.open .modal-box {
+      transform: translateY(0);
+    }
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--grey-mid);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h2 {
+      font-family: var(--font-display);
+      color: var(--black);
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .modal-close-btn {
+      background: none;
+      border: none;
+      color: var(--grey);
+      font-size: 28px;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+    .modal-close-btn:hover {
+      color: var(--black);
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-dark);
+      max-height: 50vh;
+    }
+    .modal-body p {
+      margin-bottom: 16px;
+    }
+    .modal-body strong {
+      color: var(--black);
+    }
+
+    .scroll-alert {
+      background: rgba(220, 110, 98, 0.2);
+      border: 1px dashed var(--red);
+      color: var(--red);
+      padding: 12px;
+      text-align: center;
+      font-size: 13px;
+      margin-top: 20px;
+      position: sticky;
+      bottom: 0;
+      -webkit-backdrop-filter: blur(4px); 
+      backdrop-filter: blur(4px); 
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--grey-mid);
+      display: flex;
+      justify-content: flex-end;
+    }
+    .modal-footer .btn-primary:disabled {
+      background: #cccccc !important;
+      border-color: #cccccc !important;
+      color: #888888 !important;
+      cursor: not-allowed !important;
+      opacity: 0.7;
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @media (max-width: 992px) {
+      .formazione-wrapper {
+        flex-direction: column;
+      }
+      .formazione-left {
+        padding: 80px 30px 40px;
+        order: 1;
+      }
+      .formazione-right {
+        height: 50vh;
+        order: 2;
+        min-height: 300px;
+      }
+      .formazione-header-back {
+        left: 30px;
+        top: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .form-row-f {
+        grid-template-columns: 1fr;
+      }
+      .formazione-left {
+        padding: 70px 20px 30px;
+      }
+      .formazione-header-back {
+        left: 20px;
+        top: 16px;
+      }
+      .form-container-box {
+        padding: 0;
+      }
+      .modal-box {
+        max-width: 95vw;
+        max-height: 90vh;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="formazione-wrapper">
+
+    <!-- COLONNA SINISTRA: FORM -->
+    <section class="formazione-left">
+      <div class="formazione-header-back">
+        <a href="index.html" class="back-link">← Torna alla Home</a>
+      </div>
+
+      <div class="form-container-box">
+        <span class="section-tag">Formazione 25 ore di Preventivista</span>
+        <h1 class="form-title">Il primo passo per iniziare.</h1>
+        <p class="form-subtitle">Accedi alla piattaforma dove ogni giorno riceverai 5 ore di formazione per un totale di 25 ore, mirata al completamento del test finale con attestato obbligatorio per il ruolo.</p>
+
+        <form id="iscrizioneForm" novalidate>
+          <div class="form-group-f">
+            <label for="nomeCompleto">Nome Completo *</label>
+            <input type="text" id="nomeCompleto" name="nomeCompleto" placeholder="" required autocomplete="name" />
+            <span class="field-error" id="err-nomeCompleto"></span>
+          </div>
+
+          <div class="form-group-f">
+            <label for="codiceFiscale">Codice Fiscale *</label>
+            <input type="text" id="codiceFiscale" name="codiceFiscale" placeholder="" required style="text-transform: uppercase;" maxlength="16" />
+            <span class="field-error" id="err-codiceFiscale"></span>
+          </div>
+
+          <div class="form-row-f">
+            <div class="form-group-f">
+              <label for="telefono">Cellulare *</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="" required maxlength="12" />
+              <span class="field-error" id="err-telefono"></span>
+            </div>
+            <div class="form-group-f">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="" required />
+              <span class="field-error" id="err-email"></span>
+            </div>
+          </div>
+
+          <div id="openPrivacyModal" class="privacy-agreement-wrapper" id="privacyWrapper">
+            <label class="custom-checkbox-container">
+              <input type="checkbox" id="privacyCheck" disabled />
+              <span class="checkbox-checkmark"></span>
+              <span class="checkbox-label-text" style="margin-top: 2px;">
+                Accetto i <span class="trigger-modal-link">Termini e Condizioni d'uso</span> *
+              </span>
+            </label>
+          </div>
+
+          <div class="form-actions-f">
+            <button type="submit" id="btnProcedi" class="btn btn-primary btn-full" disabled>
+              Entra Ora
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- COLONNA DESTRA: CAROUSEL -->
+    <section class="formazione-right">
+      <div class="carousel-container" id="formazioneCarousel">
+        <div class="carousel-track">
+          <div class="carousel-slide active">
+            <img src="img/happy1.png" alt="Formazione Professionale 1" />
+          </div>
+          <div class="carousel-slide">
+            <img src="img/happy2.png" alt="Formazione Professionale 2" />
+          </div>
+          <div class="carousel-slide">
+            <img src="img/happy3.png" alt="Formazione Professionale 3" />
+          </div>
+        </div>
+
+        <div class="carousel-indicators">
+          <span class="indicator active" data-slide="0"></span>
+          <span class="indicator" data-slide="1"></span>
+          <span class="indicator" data-slide="2"></span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODALE TERMINI E CONDIZIONI -->
+<div class="modal-overlay" id="privacyModal" aria-hidden="true">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2>Termini e Condizioni di Servizio</h2>
+      <button type="button" class="modal-close-btn" id="closePrivacyModal">&times;</button>
+    </div>
+
+    <div class="modal-body" id="modalScrollBody">
+
+      <p><strong>1. Oggetto del Servizio</strong><br>
+      I presenti Termini e Condizioni disciplinano l'accesso ai corsi di formazione erogati da Edil Cam Srls. L'iscrizione consente all'utente di accedere al percorso formativo, ai materiali didattici e alle attività previste per la durata e secondo le modalità stabilite da Edil Cam Srls.</p>
+
+      <p><strong>2. Modalità di Pagamento e Partecipazione</strong><br>
+      Il pagamento del servizio consente l'accesso al percorso formativo della durata complessiva di <strong>25 ore</strong>, comprensivo dei relativi contenuti didattici e della prova finale di valutazione. Il corrispettivo versato è riferito alla fruizione del percorso formativo e dei servizi ad esso connessi e <strong>non costituisce garanzia del conseguimento dell'attestato</strong>.</p>
+
+      <p><strong>3. Prova Finale e Rilascio dell'Attestato</strong><br>
+      Al termine del percorso formativo l'utente potrà sostenere il <strong>quiz finale di valutazione</strong>. Il rilascio dell'attestato è subordinato al completamento del percorso previsto e al <strong>superamento del quiz secondo la soglia minima stabilita da Edil Cam Srls</strong>. Il mancato superamento della prova comporta il mancato rilascio dell'attestato.</p>
+
+      <p><strong>4. Mancato Superamento del Quiz</strong><br>
+      L'utente dichiara di essere consapevole che il superamento del quiz finale non è garantito dalla semplice iscrizione al percorso formativo. Il <strong>mancato superamento del quiz, il mancato completamento delle ore previste o la mancata partecipazione alla prova finale non comportano automaticamente il diritto al rimborso totale o parziale</strong> della quota versata, in quanto il servizio acquistato consiste nella possibilità di usufruire del percorso formativo e di sostenere la relativa valutazione finale. Restano salvi esclusivamente gli eventuali diritti inderogabili previsti dalla normativa vigente.</p>
+
+      <p><strong>5. Proprietà Intellettuale</strong><br>
+      Tutti i contenuti multimediali, i testi, i materiali didattici, i loghi e gli eventuali software o codici forniti durante il percorso formativo sono di proprietà esclusiva di Edil Cam Srls o dei rispettivi autori. È fatto espresso divieto di riproduzione, registrazione, diffusione, vendita o condivisione non autorizzata dei suddetti contenuti.</p>
+
+      <p><strong>6. Comportamento dell'Utente</strong><br>
+      L'utente si impegna a utilizzare la piattaforma e i materiali esclusivamente per finalità personali e formative, rispettando le indicazioni fornite da Edil Cam Srls. È vietato condividere le proprie credenziali di accesso, consentire a terzi di utilizzare il proprio account o adottare comportamenti che possano compromettere il regolare svolgimento delle attività formative.</p>
+
+      <p><strong>7. Limitazione di Responsabilità</strong><br>
+      Edil Cam Srls si impegna a garantire la regolare erogazione del percorso formativo, ma non può essere ritenuta responsabile per eventuali interruzioni o malfunzionamenti derivanti da cause di forza maggiore, problemi tecnici dei provider, connessioni internet dell'utente, dispositivi utilizzati dall'utente o interventi di manutenzione tecnica.</p>
+
+      <p><strong>8. Trattamento dei Dati Personali</strong><br>
+      I dati personali forniti dall'utente vengono trattati nel rispetto della normativa vigente in materia di protezione dei dati personali, incluso il Regolamento UE 2016/679 (GDPR), esclusivamente per le finalità connesse alla gestione dell'iscrizione, all'erogazione del servizio formativo, agli adempimenti amministrativi e alla gestione dell'eventuale attestato.</p>
+
+      <p><strong>9. Accettazione dei Termini</strong><br>
+      Procedendo con l'iscrizione, l'utente dichiara di aver letto, compreso e accettato integralmente i presenti Termini e Condizioni. L'utente dichiara inoltre di essere stato preventivamente informato che <strong>il conseguimento dell'attestato è subordinato al superamento della prova finale</strong> e che il pagamento del servizio non garantisce il superamento della stessa.</p>
+
+      <div class="scroll-alert" id="scrollAlert">
+        ↓ Scorri fino in fondo per sbloccare l'accettazione
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" id="btnAccettaTermini" class="btn btn-primary" disabled>
+        Accetto e Confermo
+      </button>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-main">EDIL CAM <span class="logo-sub">SRLS</span></span>
+        <p>Piazza della Repubblica, 5, Milano (MI)</p>
+        <p>Lun-Sab... 6:00 - 18:00<br>Dom... 6:00 - 12:00</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#galleria">Galleria</a>
+        <a href="#lavora">Lavora con Noi</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+      <div class="footer-legal">
+        <p>© 2026 Edil Cam Srls - P.IVA 12249540969</p>
+        <p><a href="mailto:edilcamsrlsmilano@gmail.com">edilcamsrlsmilano@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =============================================
+       EDIL CAM SRLS – formazione-script.js
+       Validazione live su ogni campo
+       ============================================= */
+
+    (function () {
+      'use strict';
+
+      // ── Configurazione ──────────────────────────
+      const PAYMENT_URL = "https://paypal.me/EdilCamSrls/189.90EUR";
+
+      // ── Elementi form ────────────────────────────
+      const form          = document.getElementById('iscrizioneForm');
+      const privacyCheck  = document.getElementById('privacyCheck');
+      const btnProcedi    = document.getElementById('btnProcedi');
+
+      // ── Elementi modale ──────────────────────────
+      const openModalLink    = document.getElementById('openPrivacyModal');
+      const privacyModal     = document.getElementById('privacyModal');
+      const closeModalBtn    = document.getElementById('closePrivacyModal');
+      const modalScrollBody  = document.getElementById('modalScrollBody');
+      const btnAccettaTermini = document.getElementById('btnAccettaTermini');
+      const scrollAlert      = document.getElementById('scrollAlert');
+      const privacyWrapper   = document.getElementById('privacyWrapper');
+
+      let hasScrolledToBottom = false;
+
+      /* =============================================
+         1. REGOLE DI VALIDAZIONE LIVE
+         ============================================= */
+
+      /**
+       * Ogni regola ha:
+       *   id       – id dell'input
+       *   errId    – id dello span errore
+       *   validate – funzione (value) → stringa errore oppure ''
+       *   filter   – (opzionale) funzione chiamata su ogni keystroke
+       *              per bloccare caratteri non ammessi
+       */
+      const rules = [
+        {
+          id: 'nomeCompleto',
+          errId: 'err-nomeCompleto',
+          // Solo lettere, spazi, apostrofi e trattini (nomi composti/stranieri)
+          validate(v) {
+            if (!v.trim()) return 'Il nome è obbligatorio.';
+            if (!/^[A-Za-zÀ-ÖØ-öø-ÿ' \-]+$/.test(v.trim()))
+              return 'Usa solo lettere, spazi o apostrofi.';
+            if (v.trim().length < 2) return 'Inserisci almeno 2 caratteri.';
+            return '';
+          },
+          // Impedisce la digitazione di numeri o simboli non ammessi
+          filter(e) {
+            const allowed = /^[A-Za-zÀ-ÖØ-öø-ÿ' \-]$/;
+            if (e.key.length === 1 && !allowed.test(e.key)) e.preventDefault();
+          }
+        },
+        {
+          id: 'codiceFiscale',
+          errId: 'err-codiceFiscale',
+          validate(v) {
+            const cf = v.trim().toUpperCase();
+            if (!cf) return 'Il codice fiscale è obbligatorio.';
+            if (cf.length < 16) return `Codice fiscale non valido`;
+            // Regex standard codice fiscale italiano
+            const reCF = /^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/;
+            if (!reCF.test(cf)) return 'Codice fiscale non valido.';
+            return '';
+          }
+        },
+        {
+          id: 'telefono',
+          errId: 'err-telefono',
+          validate(v) {
+            if (!v.trim()) return 'Il numero è obbligatorio.';
+            // Solo cifre, max 12 caratteri (già bloccato da maxlength)
+            if (!/^\d+$/.test(v.trim())) return 'Inserisci solo numeri.';
+            if (v.trim().length < 6) return 'Numero troppo corto.';
+            return '';
+          },
+          // Blocca qualsiasi carattere non numerico
+          filter(e) {
+            if (e.key.length === 1 && !/\d/.test(e.key)) e.preventDefault();
+          }
+        },
+        {
+          id: 'email',
+          errId: 'err-email',
+          validate(v) {
+            if (!v.trim()) return "L'email è obbligatoria.";
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()))
+              return 'Inserisci un indirizzo email valido.';
+            return '';
+          }
+        }
+      ];
+
+      // Stato validità per ogni campo
+      const fieldValid = {};
+      rules.forEach(r => { fieldValid[r.id] = false; });
+
+      /* ── Helpers UI ─────────────────────────────── */
+      function setFieldState(input, errSpan, errorMsg) {
+        if (errorMsg) {
+          input.classList.add('is-invalid');
+          input.classList.remove('is-valid');
+          errSpan.textContent = errorMsg;
+        } else {
+          input.classList.remove('is-invalid');
+          input.classList.add('is-valid');
+          errSpan.textContent = '';
+        }
+      }
+
+      /* ── Aggiorna abilitazione bottone ──────────── */
+      function updateSubmitBtn() {
+        const allValid = rules.every(r => fieldValid[r.id]);
+        if (allValid && privacyCheck.checked) {
+          btnProcedi.removeAttribute('disabled');
+        } else {
+          btnProcedi.setAttribute('disabled', 'true');
+        }
+      }
+
+      /* ── Collega regole agli input ───────────────── */
+      rules.forEach(rule => {
+        const input   = document.getElementById(rule.id);
+        const errSpan = document.getElementById(rule.errId);
+        if (!input || !errSpan) return;
+
+        // Blocco keystroke (filter opzionale)
+        if (rule.filter) {
+          input.addEventListener('keydown', rule.filter);
+        }
+
+        // Durante la digitazione: aggiorna solo lo stato interno, nessun messaggio
+        input.addEventListener('input', () => {
+          const err = rule.validate(input.value);
+          fieldValid[rule.id] = (err === '' && input.value.trim() !== '');
+          updateSubmitBtn();
+        });
+
+        // Solo al blur mostra errori/successo
+        input.addEventListener('blur', () => {
+          const err = rule.validate(input.value);
+          if (input.value.trim() !== '') {
+            setFieldState(input, errSpan, err);
+          }
+          fieldValid[rule.id] = (err === '' && input.value.trim() !== '');
+          updateSubmitBtn();
+        });
+
+        // Al focus rimuove feedback visivo per non disturbare durante la modifica
+        input.addEventListener('focus', () => {
+          input.classList.remove('is-invalid', 'is-valid');
+          errSpan.textContent = '';
+        });
+      });
+
+      privacyCheck.addEventListener('change', updateSubmitBtn);
+
+      /* =============================================
+         2. LOGICA MODALE (SCROLL OBBLIGATORIO)
+         ============================================= */
+      openModalLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        privacyModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        hasScrolledToBottom = false;
+        btnAccettaTermini.setAttribute('disabled', 'true');
+        scrollAlert.style.display = 'block';
+        privacyWrapper.classList.remove('unlocked');
+      });
+
+      function chiudiModale() {
+        privacyModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      closeModalBtn.addEventListener('click', chiudiModale);
+
+      privacyModal.addEventListener('click', function (e) {
+        if (e.target === privacyModal) chiudiModale();
+      });
+
+      modalScrollBody.addEventListener('scroll', function () {
+        if (hasScrolledToBottom) return;
+        const { clientHeight, scrollHeight, scrollTop } = modalScrollBody;
+        if (scrollHeight - scrollTop <= clientHeight + 20) {
+          hasScrolledToBottom = true;
+          btnAccettaTermini.removeAttribute('disabled');
+          scrollAlert.style.display = 'none';
+          privacyWrapper.classList.add('unlocked');
+        }
+      });
+
+      btnAccettaTermini.addEventListener('click', function () {
+        privacyCheck.removeAttribute('disabled');
+        privacyCheck.checked = true;
+        chiudiModale();
+        updateSubmitBtn();
+      });
+
+      /* =============================================
+         3. SUBMIT → REDIRECT AL PAGAMENTO
+         ============================================= */
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Doppio controllo finale su tutti i campi
+        let allOk = true;
+        rules.forEach(rule => {
+          const input   = document.getElementById(rule.id);
+          const errSpan = document.getElementById(rule.errId);
+          const err = rule.validate(input.value);
+          if (err) {
+            setFieldState(input, errSpan, err);
+            allOk = false;
+          }
+        });
+        if (!allOk) return;
+
+        btnProcedi.textContent = 'Trasferimento sicuro...';
+        window.location.href = PAYMENT_URL;
+      });
+
+      /* =============================================
+         4. CAROUSEL IMMAGINI
+         ============================================= */
+      const slides    = document.querySelectorAll('.carousel-slide');
+      const indicators = document.querySelectorAll('.indicator');
+      let currentSlide = 0;
+      let carouselInterval;
+
+      function showSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        indicators.forEach(i => i.classList.remove('active'));
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % slides.length);
+      }
+
+      function startCarousel() {
+        if (carouselInterval) clearInterval(carouselInterval);
+        carouselInterval = setInterval(nextSlide, 4000);
+      }
+
+      indicators.forEach(indicator => {
+        indicator.addEventListener('click', function () {
+          clearInterval(carouselInterval);
+          showSlide(parseInt(this.getAttribute('data-slide')));
+          startCarousel();
+        });
+      });
+
+      startCarousel();
+
+    })();
+  </script>
+
+</body>
+</html>

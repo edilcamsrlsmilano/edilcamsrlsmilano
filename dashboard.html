@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <title>Edil Cam Srls - Area Formazione</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="dash-navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-main" style="color:var(--white);">EDIL CAM</span>
+      <span class="logo-sub">FORMAZIONE</span>
+    </a>
+    <div class="dash-progress-pill">
+      <span class="pct-label">Progresso corso</span>
+      <div class="dash-progress-ring">
+        <svg viewBox="0 0 40 40">
+          <circle class="ring-bg" cx="20" cy="20" r="16"></circle>
+          <circle class="ring-fg" id="ringFg" cx="20" cy="20" r="16" stroke-dasharray="100.5" stroke-dashoffset="100.5"></circle>
+        </svg>
+        <span class="ring-num" id="ringNum">0%</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="dash-body">
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar">
+
+      <div class="dash-guest">
+        <div class="guest-avatar">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Z" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 21c1.4-4 4.8-6 8.5-6s7.1 2 8.5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="guest-name">Guest</div>
+          <div class="guest-role">Percorso formativo cantiere</div>
+        </div>
+      </div>
+
+      <div class="dash-overall">
+        <div class="dash-overall-top">
+          <span class="dash-overall-label">Video visti</span>
+          <span class="dash-overall-pct" id="overallPct">0%</span>
+        </div>
+        <div class="overall-bar"><div class="overall-bar-fill" id="overallBarFill"></div></div>
+      </div>
+
+      <div class="dash-days" id="dashDays">
+        <!-- Le cartelle giorno 1-5 e quiz vengono generate via JS -->
+      </div>
+
+    </aside>
+
+    <!-- MAIN: PLAYER -->
+    <main class="dash-main">
+
+      <!-- Stato player video -->
+      <div class="player-card" id="playerCard">
+        <div class="player-header">
+          <div>
+            <p class="player-eyebrow" id="playerEyebrow">Seleziona un video</p>
+            <h1 class="player-title" id="playerTitle">Nessun video in riproduzione</h1>
+          </div>
+          <span class="player-counter" id="playerCounter"></span>
+        </div>
+
+        <div class="player-frame-wrap" id="playerFrameWrap">
+          <div class="player-empty" id="playerEmpty">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <p>Apri una cartella giorno a sinistra e scegli un video da guardare.</p>
+          </div>
+          <div id="ytPlayer" style="position:absolute;inset:0;display:none;"></div>
+          <div class="player-shield" id="playerShield"></div>
+          <div class="player-error" id="playerError">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="1.6"/></svg>
+            <p>Il video non si è caricato correttamente. Riprova oppure scegli un altro video dalla lista.</p>
+            <button class="ctrl-btn" id="btnRetryVideo" type="button">Riprova</button>
+          </div>
+        </div>
+
+        <div class="player-progress-row">
+          <div class="mini-bar"><div class="mini-bar-fill" id="miniBarFill"></div></div>
+          <span class="mini-time" id="miniTime">00:00 / 00:00</span>
+        </div>
+
+        <div class="player-controls">
+          <div class="ctrl-group">
+            <button class="ctrl-btn" id="btnBack" disabled>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Torna alla lista
+            </button>
+          </div>
+          <div class="ctrl-group">
+            <button class="ctrl-btn" id="btnRewind" disabled>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M11 17l-5-5 5-5M19 17l-5-5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              -10s
+            </button>
+            <button class="ctrl-btn ctrl-btn--primary" id="btnPlayPause" disabled>
+              <svg id="iconPlay" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="currentColor"/></svg>
+              <svg id="iconPause" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
+              <span id="playPauseLabel">Play</span>
+            </button>
+            <button class="ctrl-btn" id="btnForward" disabled title="Non disponibile: il video non può essere saltato avanti">
+              +10s
+              <svg viewBox="0 0 24 24" fill="none"><path d="M13 17l5-5-5-5M5 17l5-5-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="ctrl-group volume-group">
+            <button class="volume-btn" id="btnMute" type="button" disabled aria-label="Attiva/disattiva audio">
+              <svg id="iconVolOn" viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M17 9a3.5 3.5 0 0 1 0 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg id="iconVolOff" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="100" disabled aria-label="Volume">
+          </div>
+        </div>
+
+        <p class="player-note">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="1.6"/></svg>
+          Il video non può essere riavvolto o saltato: guardalo per intero per registrare il completamento.
+        </p>
+        <p class="player-note">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="1.6"/></svg>
+          Puoi prendere appunti per ogni video, ma non sono obbligatori per completare il corso.
+        </p>
+        <p class="player-note">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="1.6"/></svg>
+          Se hai problemi con il player, prova a ricaricare la pagina, a usare un altro browser o contatta il supporto.
+        </p>
+        
+      </div>
+
+      <!-- Stato quiz pronto (mostrato al 100%, sostituisce il player) -->
+      <div class="quiz-ready" id="quizReady" style="display:none;">
+        <div class="quiz-ready-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3 8-8M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2>Hai completato tutti i video</h2>
+        <p>Ottimo lavoro. Ora puoi passare al quiz finale per verificare quanto hai imparato.</p>
+        <a href="quiz.html" class="btn btn-primary">Fai il Quiz</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- TOAST COMPLETAMENTO VIDEO -->
+  <div class="video-toast" id="videoToast">
+    <div class="toast-check">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div>
+      <div class="video-toast-title">Video completato</div>
+      <div class="video-toast-sub" id="videoToastSub">Progresso aggiornato</div>
+    </div>
+  </div>
+
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <title>Posizioni Aperte - Edil Cam Srls</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="lavora-con-noi.css" />
+</head>
+<body>
+
+  <header class="navbar scrolled" style="position: relative;">
+    <div class="nav-container">
+      <a href="index.html#home" class="nav-logo">
+        <span class="logo-main">EDIL CAM</span>
+        <span class="logo-sub">SRLS</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#chi-siamo" class="nav-link">Chi Siamo</a>
+        <a href="index.html#galleria" class="nav-link">Galleria</a>
+        <a href="index.html#lavora" class="nav-link">Lavora con Noi</a>
+        <a href="index.html#contatti" class="nav-link">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header section-header--centered">
+        <span class="section-tag">Carriere</span>
+        <h2 class="section-title">Posizioni Attive</h2>
+        <p class="section-sub">Unisciti a un team strutturato che opera su scala nazionale.</p>
+      </div>
+
+      <div class="positions-grid">
+        
+        <div class="position-card">
+          <div>
+            <h3 class="pos-title">Geometra di Cantiere</h3>
+            <span class="pos-ral">RAL €30.000</span>
+            <ul class="pos-details">
+              <li>Gestione avanzamento lavori e contabilità di cantiere</li>
+              <li>Coordinamento delle maestranze e subappalti</li>
+              <li>Rilievo misure e gestione approvvigionamenti</li>
+            </ul>
+          </div>
+          <button class="btn btn-primary open-apply-modal" data-job="Geometra di Cantiere">Candidati Ora</button>
+        </div>
+
+        <div class="position-card">
+          <div>
+            <h3 class="pos-title">Tecnico Preventivista</h3>
+            <span class="pos-ral">RAL €24.500</span>
+            <ul class="pos-details">
+              <li>Analisi computi metrici estimativi e capitolati</li>
+              <li>Elaborazione di offerte economiche e analisi costi</li>
+              <li>Interfaccia diretta con fornitori e ufficio acquisti</li>
+            </ul>
+          </div>
+          <button class="btn btn-primary open-apply-modal" data-job="Tecnico Preventivista">Candidati Ora</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal-wrapper">
+      <button class="modal-close" id="closeModal" aria-label="Chiudi">&times;</button>
+      <h3 class="modal-title" id="modalJobTitle">Invia Candidatura</h3>
+      <p class="modal-subtitle">Compila i campi richiesti per inoltrare il tuo profilo.</p>
+      
+      <form class="contatti-form" id="careerForm" enctype="multipart/form-data">
+        <input type="hidden" id="jobPosition" name="posizione" value="">
+        
+        <div class="form-group form-group--full" style="margin-bottom: 16px;">
+          <label for="fullName">Nome Completo *</label>
+          <input type="text" id="fullName" name="nome" placeholder="Mario Rossi" required />
+        </div>
+        
+        <div class="form-group form-group--full" style="margin-bottom: 16px;">
+          <label for="userEmail">Email *</label>
+          <input type="email" id="userEmail" name="email" placeholder="mario@esempio.it" required />
+        </div>
+        
+        <div class="form-group form-group--full" style="margin-bottom: 16px;">
+          <label for="userPhone">Numero di Telefono *</label>
+          <input type="tel" id="userPhone" name="telefono" placeholder="+39 321 456 7890" required />
+        </div>
+        
+        <div class="form-group form-group--full" style="margin-bottom: 24px;">
+          <label for="userCv">Carica il tuo CV (PDF, DOCX) *</label>
+          <input type="file" id="userCv" name="curriculum" accept=".pdf,.docx" required />
+        </div>
+        
+        <div class="form-footer">
+          <p class="form-privacy">I tuoi dati sono protetti dal GDPR.</p>
+          <button type="submit" class="btn btn-primary btn-submit">Invia CV</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-main">EDIL CAM <span class="logo-sub">SRLS</span></span>
+        <p>Piazza della Repubblica, 5, Milano (MI)</p>
+        <p>Lun-Sab... 6:00 - 18:00<br>Dom... 6:00 - 12:00</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html#chi-siamo">Chi Siamo</a>
+        <a href="index.html#galleria">Galleria</a>
+        <a href="index.html#lavora">Lavora con Noi</a>
+        <a href="index.html#contatti">Contatti</a>
+      </nav>
+      <div class="footer-legal">
+        <p>© 2026 Edil Cam Srls - P.IVA 12249540969</p>
+        <p><a href="mailto:edilcamsrlsmilano@gmail.com">edilcamsrlsmilano@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const modal = document.getElementById('applyModal');
+    const closeBtn = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modalJobTitle');
+    const hiddenInput = document.getElementById('jobPosition');
+    const openButtons = document.querySelectorAll('.open-apply-modal');
+
+    // Apri il popup e aggiorna il titolo dinamicamente
+    openButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const jobName = button.getAttribute('data-job');
+        modalTitle.textContent = `Candidatura per: ${jobName}`;
+        hiddenInput.value = jobName;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Blocca lo scroll sotto
+      });
+    });
+
+    // Chiudi il popup sul tasto X
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // Chiudi cliccando fuori dalla card bianca
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <title>Edil Cam Srls - Appalti pubblici e privati</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-main">EDIL CAM</span>
+        <span class="logo-sub">SRLS</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#chi-siamo" class="nav-link">Chi Siamo</a>
+        <a href="#galleria" class="nav-link">Galleria</a>
+        <a href="#lavora" class="nav-link">Lavora con Noi</a>
+        <a href="#contatti" class="nav-link">Contatti</a>
+        <a href="#contatti" class="nav-cta">Contattaci Ora</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-diagonal"></div>
+
+    <div class="hero-carousel">
+      <div class="hero-carousel-track" id="heroCarouselTrack">
+        <img src="img/hero1.png" alt="" class="hero-carousel-slide" />
+        <img src="img/hero2.png" alt="" class="hero-carousel-slide" />
+        <img src="img/hero3.png" alt="" class="hero-carousel-slide" />
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Appalti Pubblici &amp; Privati</p>
+      <h1 class="hero-title">Costruiamo con<br> metodo,<br><em>consegniamo</em> con<br>rispetto.</h1>
+      <p class="hero-body">Dalla piccola ristrutturazione al cantiere complesso: qualità di esecuzione, tempi certi e massima trasparenza per committenti pubblici e privati su scala nazionale.</p>
+      <div class="hero-actions">
+        <a href="#contatti" class="btn btn-primary">Contattaci Ora</a>
+        <a href="#galleria" class="btn btn-outline">Vedi i Progetti</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <span class="badge-number">24+</span>
+      <span class="badge-label">Anni di cantiere</span>
+    </div>
+  </section>
+
+  <!-- CHI SIAMO -->
+  <section class="section chi-siamo" id="chi-siamo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Chi Siamo</span>
+        <h2 class="section-title">Un'azienda che cresce<br />strutturandosi, non improvvisando.</h2>
+      </div>
+      <div class="chi-grid">
+        <div class="chi-text">
+          <p>Edil Cam Srls opera nel settore dell'edilizia civile e industriale con un approccio fondato sulla solidità tecnica e sull'organizzazione interna. Gestiamo commesse di diversa complessità con la stessa attenzione: ogni cantiere è seguito da figure dedicate alla preventivazione, alla pianificazione e al controllo qualità.</p>
+          <p>Abbiamo investito in processi commerciali e tecnici strutturati per rispondere rapidamente alle richieste di offerta, ovunque si trovino i nostri committenti sul territorio nazionale.</p>
+          <ul class="chi-list">
+            <li><span class="list-icon">▸</span> Costruzione e ristrutturazione civile</li>
+            <li><span class="list-icon">▸</span> Interventi industriali e su immobili commerciali</li>
+            <li><span class="list-icon">▸</span> Opere pubbliche per committenti istituzionali</li>
+            <li><span class="list-icon">▸</span> Preventivazione rapida su scala nazionale</li>
+          </ul>
+        </div>
+        <div class="chi-stats">
+          <div class="stat-card">
+            <span class="stat-num">24+</span>
+            <span class="stat-desc">Anni di attività</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">300+</span>
+            <span class="stat-desc">Cantieri completati</span>
+          </div>
+          <div class="stat-card stat-card--accent">
+            <span class="stat-num">100%</span>
+            <span class="stat-desc">Trasparenza nei rapporti</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">3</span>
+            <span class="stat-desc">Regioni operative</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERIA -->
+  <section class="section galleria" id="galleria">
+    <div class="container">
+      <div class="section-header section-header--centered">
+        <span class="section-tag">Galleria</span>
+        <h2 class="section-title">I nostri lavori parlano<br />per noi.</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-item--span2" data-label="Ristrutturazione Civile">
+          <img src="img/gal1.png" alt="Ristrutturazione Civile" />
+          <div class="gallery-overlay"><span>Ristrutturazione Civile</span></div>
+        </div>
+        <div class="gallery-item" data-label="Cantiere Industriale">
+          <img src="img/gal2.png" alt="Cantiere Industriale" />
+          <div class="gallery-overlay"><span>Cantiere Industriale</span></div>
+        </div>
+        <div class="gallery-item" data-label="Opera Pubblica">
+          <img src="img/gal3.png" alt="Opera Pubblica" />
+          <div class="gallery-overlay"><span>Opera Pubblica</span></div>
+        </div>
+        <div class="gallery-item" data-label="Nuova Costruzione">
+          <img src="img/gal4.png" alt="Nuova Costruzione" />
+          <div class="gallery-overlay"><span>Nuova Costruzione</span></div>
+        </div>
+        <div class="gallery-item gallery-item--span2" data-label="Ristrutturazione Commerciale">
+          <img src="img/gal5.png" alt="Ristrutturazione Commerciale" />
+          <div class="gallery-overlay"><span>Ristrutturazione Commerciale</span></div>
+        </div>
+        <div class="gallery-item" data-label="Finitura Interna">
+          <img src="img/gal6.png" alt="Finitura Interna" />
+          <div class="gallery-overlay"><span>Finitura Interna</span></div>
+        </div>
+      </div>
+      <div class="gallery-cta">
+        <a href="#contatti" class="btn btn-primary">Richiedi un Preventivo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAVORA CON NOI -->
+  <section class="section lavora" id="lavora">
+    <div class="container">
+      <div class="lavora-inner">
+        <div class="lavora-text">
+          <span class="section-tag section-tag--light">Lavora con Noi</span>
+          <h2 class="section-title section-title--light">Stiamo crescendo.<br />Fallo con noi.</h2>
+          <p>Edil Cam Srls è in continua espansione e cerca professionisti del settore: capicantiere, geometri, operai specializzati, tecnici di preventivazione. Se hai competenza, serietà e voglia di fare parte di un'azienda che investe sul proprio team, scrivici.</p>
+          <ul class="lavora-list">
+            <li>Capicantiere e coordinatori</li>
+            <li>Geometri e tecnici</li>
+            <li>Operai specializzati</li>
+            <li>Addetti alla preventivazione</li>
+          </ul>
+          <a href="lavora-con-noi.html" class="btn btn-primary">Invia la tua Candidatura</a>
+        </div>
+        <div class="lavora-visual">
+          <div class="lavora-carousel">
+            <div class="carousel-track" id="carouselTrack">
+              <img src="img/join1.png" alt="Team al lavoro" class="carousel-slide" />
+              <img src="img/join2.png" alt="Cantiere" class="carousel-slide" />
+              <img src="img/join3.png" alt="Squadra" class="carousel-slide" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section class="section contatti" id="contatti">
+    <div class="container">
+      <div class="section-header section-header--centered">
+        <span class="section-tag">Contatti</span>
+        <h2 class="section-title">Parliamo del tuo progetto.</h2>
+        <p class="section-sub">Rispondiamo entro 24 ore lavorative con un'offerta chiara e dettagliata.</p>
+      </div>
+      <div class="contatti-grid">
+        <div class="contatti-info">
+          <div class="info-block">
+            <span class="info-label">Telefono</span>
+            <span class="info-value">Non disponibile</span>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Email</span>
+            <a href="mailto:edilcamsrlsmilano@gmail.com" class="info-value">edilcamsrlsmilano@gmail.com</a>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Sede Ufficio</span>
+            <span class="info-value">Piazza della Repubblica, 5, Milano (MI)</span>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Orari</span>
+            <span class="info-value"><span style="font-weight:bold;">Lun-Sab</span>... 6:00 - 18:00</span><br>
+            <span class="info-value"><span style="font-weight:bold;">Dom</span>... 6:00 - 12:00</span>
+          </div>
+        </div>
+
+        <!-- FORM WRAPPER: contiene sia il form che il messaggio di successo -->
+        <div class="form-wrapper" id="formWrapper">
+          <form class="contatti-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome e Cognome *</label>
+                <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="mario@esempio.it" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+39 321 456 7890" />
+              </div>
+              <div class="form-group">
+                <label for="tipo">Tipo di Intervento</label>
+                <select id="tipo" name="tipo">
+                  <option value="">Seleziona...</option>
+                  <option>Ristrutturazione civile</option>
+                  <option>Nuova costruzione</option>
+                  <option>Intervento industriale</option>
+                  <option>Opera pubblica</option>
+                  <option>Altro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group form-group--full">
+              <label for="messaggio">Descrizione del Progetto *</label>
+              <textarea id="messaggio" name="messaggio" rows="5" placeholder="Descrivici il tuo progetto: tipologia di intervento, localizzazione, tempistiche indicative..." required></textarea>
+            </div>
+            <div class="form-footer">
+              <p class="form-privacy">I dati saranno trattati in conformità al GDPR. <a href="#">Privacy Policy</a></p>
+              <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">Invia Richiesta</button>
+            </div>
+          </form>
+
+          <!-- SUCCESSO: fratello del form, non figlio -->
+          <div class="form-success" id="formSuccess">
+            <div class="success-check">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="4,13 9,18 20,7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p>La tua richiesta è stata inviata.<br>Ti risponderemo entro 24 ore lavorative.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-main">EDIL CAM <span class="logo-sub">SRLS</span></span>
+        <p>Piazza della Repubblica, 5, Milano (MI)</p>
+        <p>Lun-Sab... 6:00 - 18:00<br>Dom... 6:00 - 12:00</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#galleria">Galleria</a>
+        <a href="#lavora">Lavora con Noi</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+      <div class="footer-legal">
+        <p>© 2026 Edil Cam Srls - P.IVA 12249540969</p>
+        <p><a href="mailto:edilcamsrlsmilano@gmail.com">edilcamsrlsmilano@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ================================================
+       NAVBAR – scroll + hamburger
+    ================================================ */
+    var navbar    = document.getElementById('navbar');
+    var hamburger = document.getElementById('hamburger');
+    var navLinks  = document.getElementById('navLinks');
+
+    function updateNavbar() {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    updateNavbar();
+
+    hamburger.addEventListener('click', function () {
+      var isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* ================================================
+       SMOOTH SCROLL
+    ================================================ */
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        var target = document.querySelector(targetId);
+        if (!target) return;
+        e.preventDefault();
+        var offset = navbar.offsetHeight + 16;
+        var top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+
+    /* ================================================
+       SCROLL-IN ANIMATIONS
+    ================================================ */
+    if ('IntersectionObserver' in window) {
+      var style = document.createElement('style');
+      style.textContent = [
+        '.anim { opacity:0; transform:translateY(28px); transition:opacity .55s ease, transform .55s ease; }',
+        '.anim.in { opacity:1; transform:translateY(0); }',
+        '.stat-card.anim { transition-delay:calc(var(--ci,0) * .08s); }',
+        '.gallery-item.anim { transition-delay:calc(var(--ii,0) * .07s); }'
+      ].join('');
+      document.head.appendChild(style);
+
+      document.querySelectorAll('.stat-card').forEach(function (el, i) {
+        el.style.setProperty('--ci', i);
+      });
+      document.querySelectorAll('.gallery-item').forEach(function (el, i) {
+        el.style.setProperty('--ii', i);
+      });
+
+      var targets = document.querySelectorAll(
+        '.chi-grid, .stat-card, .gallery-item, .lavora-inner, .contatti-grid, .section-header'
+      );
+      targets.forEach(function (el) { el.classList.add('anim'); });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      targets.forEach(function (el) { observer.observe(el); });
+    }
+
+    /* ================================================
+       CAROUSEL – Lavora con Noi
+    ================================================ */
+    (function () {
+      var track  = document.getElementById('carouselTrack');
+      if (!track) return;
+      var slides = track.querySelectorAll('.carousel-slide');
+      var total  = slides.length;
+      var current = 0;
+      function goTo(n) {
+        current = (n + total) % total;
+        track.style.transform = 'translateX(-' + current * 100 + '%)';
+      }
+      setInterval(function () { goTo(current + 1); }, 8000);
+    })();
+
+    /* ================================================
+       CAROUSEL – Hero
+    ================================================ */
+    (function () {
+      var track  = document.getElementById('heroCarouselTrack');
+      if (!track) return;
+      var slides = track.querySelectorAll('.hero-carousel-slide');
+      var total  = slides.length;
+      var current = 0;
+      function goTo(n) {
+        current = (n + total) % total;
+        track.style.transform = 'translateX(-' + current * 100 + '%)';
+      }
+      setInterval(function () { goTo(current + 1); }, 8000);
+    })();
+
+    /* ================================================
+       CONTACT FORM
+    ================================================ */
+    var form       = document.getElementById('contactForm');
+    var formSuccess = document.getElementById('formSuccess');
+    var submitBtn  = document.getElementById('submitBtn');
+
+    if (!form || !formSuccess || !submitBtn) return;
+
+    /* --- helpers --- */
+    function getField(id) { return form.querySelector('#' + id); }
+
+    function setError(field, msg) {
+      field.style.borderColor = '#C0392B';
+      var hint = field.parentNode.querySelector('.field-error');
+      if (!hint) {
+        hint = document.createElement('span');
+        hint.className = 'field-error';
+        hint.style.cssText = 'display:block;font-size:12px;color:#C0392B;margin-top:4px;';
+        field.parentNode.appendChild(hint);
+      }
+      hint.textContent = msg;
+    }
+
+    function clearError(field) {
+      field.style.borderColor = '';
+      var hint = field.parentNode.querySelector('.field-error');
+      if (hint) hint.remove();
+    }
+
+    /* Clear error on user input */
+    form.querySelectorAll('input, select, textarea').forEach(function (field) {
+      field.addEventListener('input', function () { clearError(this); });
+    });
+
+    /* --- validation --- */
+    function validate() {
+      var ok = true;
+
+      /* required fields */
+      form.querySelectorAll('[required]').forEach(function (field) {
+        clearError(field);
+        if (!field.value.trim()) {
+          setError(field, 'Campo obbligatorio.');
+          ok = false;
+        }
+      });
+
+      if (!ok) return false;
+
+      /* email format */
+      var emailField = getField('email');
+      var emailVal   = emailField.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal)) {
+        setError(emailField, 'Formato email non valido.');
+        ok = false;
+      }
+
+      /* phone: optional, 8–15 digits */
+      var telField = getField('telefono');
+      var telVal   = telField.value.trim();
+      if (telVal) {
+        var digits = telVal.replace(/[\s\-\+\(\)]/g, '');
+        if (digits.length < 8 || digits.length > 15) {
+          setError(telField, 'Il numero deve contenere tra 8 e 15 cifre.');
+          ok = false;
+        }
+      }
+
+      return ok;
+    }
+
+    /* --- submit --- */
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!validate()) return;
+
+      /* Disabilita pulsante e mostra stato invio */
+      submitBtn.textContent = 'Invio in corso...';
+      submitBtn.disabled = true;
+
+      /* Simula chiamata al server (900ms) poi mostra successo */
+      setTimeout(function () {
+        /* Nascondi il form con fade */
+        form.style.transition = 'opacity .3s ease';
+        form.style.opacity = '0';
+
+        setTimeout(function () {
+          /* Collassa il form senza display:none così il DOM resta integro */
+          form.style.visibility = 'hidden';
+          form.style.position   = 'absolute';
+          form.style.height     = '0';
+          form.style.overflow   = 'hidden';
+
+          /* Mostra il pannello di successo */
+          formSuccess.classList.add('visible');
+        }, 300);
+      }, 900);
+    });
+
+    /* ================================================
+       GALLERY – accessibilità tastiera
+    ================================================ */
+    document.querySelectorAll('.gallery-item').forEach(function (item) {
+      item.setAttribute('tabindex', '0');
+      item.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          console.log('Gallery item selected:', item.getAttribute('data-label'));
+        }
+      });
+    });
+
+  })();
+  </script>
+</body>
+</html>

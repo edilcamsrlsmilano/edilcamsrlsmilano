@@ -1,0 +1,97 @@
+/* =============================================
+   EDIL CAM SRLS – lavora-con-noi.css  (solo lavora-con-noi.html)
+   Dipende da styles.css
+   ============================================= */
+
+/* --- GRIGLIA POSIZIONI --- */
+.positions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.position-card {
+  background: var(--grey-light);
+  border: 1px solid var(--grey-mid);
+  padding: 40px;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.position-card:hover { border-color: var(--red); transform: translateY(-4px); }
+
+.pos-title { font-size: 28px; color: var(--black); margin-bottom: 8px; }
+
+.pos-ral {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--red);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.pos-details { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+.pos-details li { font-size: 15px; position: relative; padding-left: 20px; }
+.pos-details li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+
+/* --- MODALE CANDIDATURA --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,26,26,0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+
+.modal-wrapper {
+  background: var(--white);
+  width: 100%;
+  max-width: 540px;
+  padding: 40px;
+  border-radius: var(--radius);
+  position: relative;
+  transform: scale(0.95);
+  transition: transform var(--transition);
+}
+.modal-overlay.active .modal-wrapper { transform: scale(1); }
+
+.modal-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--grey-dark);
+  line-height: 1;
+  transition: color var(--transition);
+}
+.modal-close:hover { color: var(--red); }
+
+.modal-title { font-size: 24px; margin-bottom: 4px; }
+.modal-subtitle { font-size: 14px; color: var(--grey); margin-bottom: 24px; }
+
+.form-group input[type="file"] {
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px dashed var(--grey-mid);
+  cursor: pointer;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .positions-grid { grid-template-columns: 1fr; }
+  .position-card { padding: 30px; }
+}
