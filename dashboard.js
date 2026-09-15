@@ -199,7 +199,7 @@ function renderDays() {
 
     var quizHead = document.createElement(quizUnlocked ? 'a' : 'div');
     quizHead.className = 'day-head';
-    if (quizUnlocked) quizHead.href = 'quiz.html';
+    if (quizUnlocked) quizHead.href = 'quiz';
     quizHead.innerHTML =
     '<span class="day-index">' + (quizUnlocked ? svgCheck() : '?') + '</span>' +
     '<span class="day-info">' +
