@@ -4,12 +4,7 @@
    ============================================= */
 
 /* --- GRIGLIA POSIZIONI --- */
-.positions-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  margin-top: 40px;
-}
+.positions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 40px; }
 
 .position-card {
   background: var(--grey-light);
@@ -39,7 +34,7 @@
 .pos-details li { font-size: 15px; position: relative; padding-left: 20px; }
 .pos-details li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
 
-/* --- MODALE CANDIDATURA --- */
+/* --- MODALI --- */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -88,6 +83,22 @@
   background: transparent;
   border: 1px dashed var(--grey-mid);
   cursor: pointer;
+}
+
+/* --- MODALE SUCCESSO --- */
+.modal-wrapper--success { max-width: 420px; text-align: center; }
+.success-icon { margin-bottom: 20px; }
+.success-circle,
+.success-check { stroke: var(--red); stroke-linecap: round; stroke-linejoin: round; }
+.success-circle { stroke-width: 2; stroke-dasharray: 151; stroke-dashoffset: 151; }
+.success-check { stroke-width: 3; stroke-dasharray: 36; stroke-dashoffset: 36; }
+.modal-overlay.active .success-circle { animation: draw 0.5s ease forwards; }
+.modal-overlay.active .success-check { animation: draw 0.3s 0.45s ease forwards; }
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .success-circle, .success-check { stroke-dashoffset: 0; animation: none; }
 }
 
 /* --- RESPONSIVE --- */

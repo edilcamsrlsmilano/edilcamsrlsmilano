@@ -37,7 +37,7 @@
       </div>
 
       <div class="positions-grid">
-        
+
         <div class="position-card">
           <div>
             <h3 class="pos-title">Geometra di Cantiere</h3>
@@ -68,40 +68,54 @@
     </div>
   </section>
 
+  <!-- MODALE CANDIDATURA -->
   <div class="modal-overlay" id="applyModal">
     <div class="modal-wrapper">
       <button class="modal-close" id="closeModal" aria-label="Chiudi">&times;</button>
       <h3 class="modal-title" id="modalJobTitle">Invia Candidatura</h3>
       <p class="modal-subtitle">Compila i campi richiesti per inoltrare il tuo profilo.</p>
-      
-      <form class="contatti-form" id="careerForm" enctype="multipart/form-data">
-        <input type="hidden" id="jobPosition" name="posizione" value="">
-        
+
+      <form class="contatti-form" id="careerForm" autocomplete="off" novalidate>
+        <input type="hidden" id="jobPosition" value="">
+
         <div class="form-group form-group--full" style="margin-bottom: 16px;">
           <label for="fullName">Nome Completo *</label>
-          <input type="text" id="fullName" name="nome" placeholder="Mario Rossi" required />
+          <input type="text" id="fullName" placeholder="Mario Rossi" required />
         </div>
-        
+
         <div class="form-group form-group--full" style="margin-bottom: 16px;">
           <label for="userEmail">Email *</label>
-          <input type="email" id="userEmail" name="email" placeholder="mario@esempio.it" required />
+          <input type="email" id="userEmail" placeholder="mario@esempio.it" required />
         </div>
-        
+
         <div class="form-group form-group--full" style="margin-bottom: 16px;">
           <label for="userPhone">Numero di Telefono *</label>
-          <input type="tel" id="userPhone" name="telefono" placeholder="+39 321 456 7890" required />
+          <input type="tel" id="userPhone" placeholder="+39 321 456 7890" required />
         </div>
-        
+
         <div class="form-group form-group--full" style="margin-bottom: 24px;">
           <label for="userCv">Carica il tuo CV (PDF, DOCX) *</label>
-          <input type="file" id="userCv" name="curriculum" accept=".pdf,.docx" required />
+          <input type="file" id="userCv" accept=".pdf,.docx" required />
         </div>
-        
+
         <div class="form-footer">
           <p class="form-privacy">I tuoi dati sono protetti dal GDPR.</p>
           <button type="submit" class="btn btn-primary btn-submit">Invia CV</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- MODALE SUCCESSO (demo) -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-wrapper modal-wrapper--success">
+      <svg class="success-icon" viewBox="0 0 52 52" width="52" height="52" aria-hidden="true">
+        <circle class="success-circle" cx="26" cy="26" r="24" fill="none" />
+        <path class="success-check" fill="none" d="M14 27l8 8 16-16" />
+      </svg>
+      <h3 class="modal-title">Candidatura Inviata</h3>
+      <p class="modal-subtitle" id="successText"></p>
+      <button class="btn btn-primary" id="closeSuccess">Chiudi</button>
     </div>
   </div>
 
@@ -127,35 +141,43 @@
   </footer>
 
   <script>
-    const modal = document.getElementById('applyModal');
-    const closeBtn = document.getElementById('closeModal');
-    const modalTitle = document.getElementById('modalJobTitle');
-    const hiddenInput = document.getElementById('jobPosition');
-    const openButtons = document.querySelectorAll('.open-apply-modal');
+    const applyModal = document.getElementById('applyModal');
+    const successModal = document.getElementById('successModal');
+    const form = document.getElementById('careerForm');
+    const jobField = document.getElementById('jobPosition');
 
-    // Apri il popup e aggiorna il titolo dinamicamente
-    openButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const jobName = button.getAttribute('data-job');
-        modalTitle.textContent = `Candidatura per: ${jobName}`;
-        hiddenInput.value = jobName;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Blocca lo scroll sotto
+    const open = m => { m.classList.add('active'); document.body.style.overflow = 'hidden'; };
+    const close = m => { m.classList.remove('active'); document.body.style.overflow = ''; };
+
+    document.querySelectorAll('.open-apply-modal').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const job = btn.dataset.job;
+        document.getElementById('modalJobTitle').textContent = `Candidatura per: ${job}`;
+        jobField.value = job;
+        open(applyModal);
       });
     });
 
-    // Chiudi il popup sul tasto X
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
+    // Demo: nessun invio, nessun dato salvato (né sul server né in locale)
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const nome = document.getElementById('fullName').value.trim().split(' ')[0] || 'e grazie';
+      document.getElementById('successText').textContent =
+        `Grazie ${nome}, la tua candidatura per ${jobField.value} è stata registrata. Ti ricontatteremo a breve.`;
+      form.reset();
+      close(applyModal);
+      open(successModal);
     });
 
-    // Chiudi cliccando fuori dalla card bianca
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
+    document.getElementById('closeModal').addEventListener('click', () => close(applyModal));
+    document.getElementById('closeSuccess').addEventListener('click', () => close(successModal));
+
+    [applyModal, successModal].forEach(m => {
+      m.addEventListener('click', e => { if (e.target === m) close(m); });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { close(applyModal); close(successModal); }
     });
   </script>
 
