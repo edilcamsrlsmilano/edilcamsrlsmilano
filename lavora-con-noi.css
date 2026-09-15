@@ -59,7 +59,7 @@
   position: relative;
   transform: scale(0.95);
   transition: transform var(--transition);
-  justify-items: center;
+  justify-items: center!important;
 }
 .modal-overlay.active .modal-wrapper { transform: scale(1); }
 
@@ -87,7 +87,7 @@
 }
 
 /* --- MODALE SUCCESSO --- */
-.modal-wrapper--success { max-width: 420px; text-align: center; justify-items: center; }
+.modal-wrapper--success { max-width: 420px; text-align: center; justify-items: center!important; }
 .success-icon { margin-bottom: 20px; }
 .success-circle,
 .success-check { stroke: var(--red); stroke-linecap: round; stroke-linejoin: round; }
