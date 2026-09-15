@@ -59,6 +59,7 @@
   position: relative;
   transform: scale(0.95);
   transition: transform var(--transition);
+  justify-items: center;
 }
 .modal-overlay.active .modal-wrapper { transform: scale(1); }
 
