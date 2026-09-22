@@ -15,40 +15,40 @@ var day = 1;
     Sostituisci "VIDEO_ID" con i veri ID YouTube (es. dQw4w9WgXcQ).
 ================================================ */
 var COURSE = [
-    { id: 1, label: 'Giorno 1', videos: [
-    { id: 'd1v1', title: 'Introduzione al cantiere',      yt: 'IS2wcVxd5aY' }, // ← già valido
-    { id: 'd1v2', title: 'Sicurezza sul lavoro',          yt: 'v3Htx9vP8ck' }, // ← esempio reale
-    { id: 'd1v3', title: 'Dispositivi di protezione',     yt: 'jNQXAC9IVRw' },
-    { id: 'd1v4', title: 'Organizzazione del cantiere',   yt: 'v3Htx9vP8ck' },
-    { id: 'd1v5', title: 'Ruoli e responsabilità',        yt: 'v3Htx9vP8ck' }
+    { id: 1, label: 'Giorno 1: Prezziari, Capitolati e Lettura del Progetto', videos: [
+        { id: 'd1v1', title: 'Video corso uso Prezziari ed Opere Edili (Corso Completo)', yt: 'dycphdMVhqs' }, // ~1h ANCE
+        { id: 'd1v2', title: 'Struttura dei Prezzi e Nuovi Prezzi per Lavori Pubblici', yt: 'S4vuIS2QjhA' }, // Masterclass GeoNetwork
+        { id: 'd1v3', title: 'Istituzione del Prezziario Regionale e Capitolati',       yt: 'dycphdMVhqs' },
+        { id: 'd1v4', title: 'Analisi dei capitolati speciali d\'appalto',             yt: 'S4vuIS2QjhA' },
+        { id: 'd1v5', title: 'Sopralluogo, misurazioni e rilievo criticità',          yt: 'dycphdMVhqs' }
     ]},
-    { id: 2, label: 'Giorno 2', videos: [
-    { id: 'd2v1', title: 'Materiali da costruzione',      yt: 'v3Htx9vP8ck' },
-    { id: 'd2v2', title: 'Lettura del progetto',          yt: 'v3Htx9vP8ck' },
-    { id: 'd2v3', title: 'Attrezzature di base',          yt: 'v3Htx9vP8ck' },
-    { id: 'd2v4', title: 'Movimentazione dei carichi',    yt: 'v3Htx9vP8ck' },
-    { id: 'd2v5', title: 'Gestione degli scarti',         yt: 'v3Htx9vP8ck' }
+    { id: 2, label: 'Giorno 2: Computo Metrico Estimativo e Pratica', videos: [
+        { id: 'd2v1', title: 'Webinar: Creare e strutturare un Computo Metrico',      yt: 'fPdQLtMS9Ns' }, // Webinar MelaWorks
+        { id: 'd2v2', title: 'Criteri di misurazione ed elenchi prezzi nel Computo',  yt: 'J5h28iAmePE' }, // Lezione PriMus
+        { id: 'd2v3', title: 'Categorizzazione delle lavorazioni e WBS',               yt: 'fPdQLtMS9Ns' },
+        { id: 'd2v4', title: 'Esercitazione pratica di stesura del Computo Metrico',  yt: 'J5h28iAmePE' },
+        { id: 'd2v5', title: 'Computo Metrico Estimativo da modelli 3D e BIM',        yt: '0eDXDi_7PvA' }  // Webinar BIM/Namirial (~1h)
     ]},
-    { id: 3, label: 'Giorno 3', videos: [
-    { id: 'd3v1', title: 'Strutture in elevazione',       yt: 'v3Htx9vP8ck' },
-    { id: 'd3v2', title: 'Lavori in quota',               yt: 'v3Htx9vP8ck' },
-    { id: 'd3v3', title: 'Impianti di cantiere',          yt: 'v3Htx9vP8ck' },
-    { id: 'd3v4', title: 'Controllo qualità',             yt: 'v3Htx9vP8ck' },
-    { id: 'd3v5', title: 'Gestione delle non conformità', yt: 'v3Htx9vP8ck' }
+    { id: 3, label: 'Giorno 3: Analisi dei Prezzi e Costi di Cantiere', videos: [
+        { id: 'd3v1', title: 'Scomposizione costi: Manodopera, Materiali e Noli',      yt: 'S4vuIS2QjhA' },
+        { id: 'd3v2', title: 'Incidenza spese generali, sicurezza e margine d\'utile', yt: 'J5h28iAmePE' },
+        { id: 'd3v3', title: 'Analisi dei Prezzi Unitari e giustificativi di offerta', yt: 'dycphdMVhqs' },
+        { id: 'd3v4', title: 'Richiesta e comparazione preventivi dei subappaltatori',yt: 'fPdQLtMS9Ns' },
+        { id: 'd3v5', title: 'Formulazione dell\'Offerta Economica e Ribassi d\'Asta', yt: 'S4vuIS2QjhA' }
     ]},
-    { id: 4, label: 'Giorno 4', videos: [
-    { id: 'd4v1', title: 'Finiture interne',              yt: 'v3Htx9vP8ck' },
-    { id: 'd4v2', title: 'Finiture esterne',              yt: 'v3Htx9vP8ck' },
-    { id: 'd4v3', title: 'Collaudo degli impianti',       yt: 'v3Htx9vP8ck' },
-    { id: 'd4v4', title: 'Documentazione di cantiere',    yt: 'v3Htx9vP8ck' },
-    { id: 'd4v5', title: 'Rapporti con il committente',   yt: 'v3Htx9vP8ck' }
+    { id: 4, label: 'Giorno 4: Software e Computo BIM (PriMus / Namirial)', videos: [
+        { id: 'd4v1', title: 'Corso completo PriMus: Dati generali ed Elenco Prezzi', yt: 'J5h28iAmePE' }, // Corso PriMus Ufficiale (~1h)
+        { id: 'd4v2', title: 'Namirial & Archicad: Computo e Contabilità in BIM',     yt: '0eDXDi_7PvA' }, // Webinar Namirial (~1h)
+        { id: 'd4v3', title: 'Integrazione dei modelli BIM con i software di stima',  yt: '0eDXDi_7PvA' },
+        { id: 'd4v4', title: 'Gestione quadri economici e filtri di categoria',       yt: 'J5h28iAmePE' },
+        { id: 'd4v5', title: 'Export, stampe e redazione elaborati di progetto',        yt: 'J5h28iAmePE' }
     ]},
-    { id: 5, label: 'Giorno 5', videos: [
-    { id: 'd5v1', title: 'Chiusura del cantiere',         yt: 'v3Htx9vP8ck' },
-    { id: 'd5v2', title: 'Consegna dell\'opera',          yt: 'v3Htx9vP8ck' },
-    { id: 'd5v3', title: 'Manutenzione post consegna',    yt: 'v3Htx9vP8ck' },
-    { id: 'd5v4', title: 'Adempimenti finali',            yt: 'v3Htx9vP8ck' },
-    { id: 'd5v5', title: 'Riepilogo del percorso',        yt: 'v3Htx9vP8ck' }
+    { id: 5, label: 'Giorno 5: Contabilità Lavori, SAL e Varianti', videos: [
+        { id: 'd5v1', title: 'Redazione Contabilità Lavori e Libretto delle Misure',  yt: 'lUvsezut9DM' }, // Lezione 6 PriMus ACCA (~1h)
+        { id: 'd5v2', title: 'Emissione SAL (Stato Avanzamento Lavori) e certificati', yt: 'lUvsezut9DM' },
+        { id: 'd5v3', title: 'Gestione delle Varianti in corso d\'opera (Misura e Corpo)', yt: 'lUvsezut9DM' },
+        { id: 'd5v4', title: 'Controllo di gestione e scostamento budget/cantiere',   yt: 'fPdQLtMS9Ns' },
+        { id: 'd5v5', title: 'Corso Contabilità Lavori Pubblici e Riserve',            yt: 'Eu4Rix4I98c' }  // Formel Lavori Pubblici
     ]}
 ];
 
