@@ -8,7 +8,7 @@
     day = 1  -> solo Giorno 1 sbloccato
     day = 3  -> Giorno 1, 2, 3 sbloccati ecc.
 ================================================ */
-var day = 6;
+var day = 1;
 
 /* ================================================
     DATI CORSO: 5 giorni x 5 video.
