@@ -523,6 +523,51 @@
         animation: none !important;
       }
     }
+
+    /* =============================================
+       REMINDER POSTI LIMITATI + COUNTDOWN
+       ============================================= */
+    .urgency-reminder {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #FBEAE8;
+      border: 1px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 28px;
+    }
+    .urgency-reminder .urgency-icon {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .urgency-reminder .urgency-text {
+      font-size: 13px;
+      color: var(--red-dark);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .urgency-reminder .urgency-text strong {
+      color: var(--red);
+    }
+    .urgency-reminder .urgency-countdown {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--red);
+      margin-top: -4px;
+      letter-spacing: 0.01em;
+    }
+
+    .urgency-reminder.closed {
+      background: var(--grey-light);
+      border-color: var(--grey-mid);
+      border-left-color: var(--grey);
+    }
+    .urgency-reminder.closed .urgency-text,
+    .urgency-reminder.closed .urgency-text strong {
+      color: var(--grey-dark);
+    }
   </style>
 </head>
 <body>
@@ -539,6 +584,15 @@
         <span class="section-tag">Formazione 25 ore di Preventivista</span>
         <h1 class="form-title">Il primo passo per iniziare.</h1>
         <p class="form-subtitle">Accedi alla piattaforma dove ogni giorno riceverai 5 ore di formazione per un totale di 25 ore, mirata al completamento del test finale con attestato obbligatorio per il ruolo.</p>
+
+        <div class="urgency-reminder" id="urgencyReminder">
+          <span class="urgency-icon">⏳</span>
+          <div>
+            <div class="urgency-text" id="urgencyText">Le iscrizioni terminano a breve</div>
+            <div class="urgency-countdown">Posti rimasti: 4</div>
+            <div class="urgency-countdown" id="urgencyCountdown"></div>
+          </div>
+        </div>
 
         <form id="iscrizioneForm" novalidate>
           <div class="form-group-f">
@@ -955,6 +1009,57 @@
       });
 
       startCarousel();
+
+    })();
+  </script>
+
+  <!-- =============================================
+       COUNTDOWN ISCRIZIONI (indipendente dal form)
+       ============================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      const DEADLINE = new Date(2026, 8, 28, 12, 0, 0); // 28/09/2026 12:00
+
+      const countdownEl = document.getElementById('urgencyCountdown');
+      const textEl      = document.getElementById('urgencyText');
+      const reminderEl  = document.getElementById('urgencyReminder');
+
+      function pad(n) {
+        return String(n).padStart(2, '0');
+      }
+
+      function renderClosed() {
+        reminderEl.classList.add('closed');
+        textEl.innerHTML = 'Le iscrizioni per questa sessione sono <strong>chiuse</strong>.';
+        countdownEl.textContent = '';
+      }
+
+      function tick() {
+        const now = new Date();
+        const diff = DEADLINE - now;
+
+        if (diff <= 0) {
+          renderClosed();
+          clearInterval(intervalId);
+          return;
+        }
+
+        const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        let parts = '';
+        if (days > 0) parts += days + 'g ';
+        parts += pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+
+        countdownEl.textContent = 'Tempo rimasto: ' + parts;
+      }
+
+      tick();
+      const intervalId = setInterval(tick, 1000);
 
     })();
   </script>
